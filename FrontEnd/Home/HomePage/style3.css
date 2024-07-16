@@ -1,0 +1,97 @@
+/* Global styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.background {
+    background-image: url("backgroundImage.jpg");
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden; /* Prevent scrollbars */
+}
+
+.nav ul {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    color: whitesmoke;
+    margin: 15px 0px 0px 20px; /* Adjusted margin */
+}
+
+.nav ul li {
+    margin-left: 20px;
+}
+
+.nav ul a {
+    text-decoration: none;
+    color: whitesmoke;
+    transition-duration: 0.6s;
+    padding: 10px 15px 15px 5px;
+    font-size: 15px;
+    font-weight: 400;
+    height: 40px;
+    width: 120px;
+}
+
+.nav ul a:hover {
+    background: linear-gradient(to left, #00bfff, #00ffff);
+    border-radius: 30px;
+    color: black;
+    justify-content: center;
+    padding-left: 10px;
+    transform: scale(1.04);
+}
+
+.demo {
+    padding: 2rem;
+    font-size: 4.5rem;
+    text-align: left;
+    height: 80vh; /* Adjusted height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 5%;
+    left: -25%;
+    
+}
+
+#welcome {
+    font-size: 6rem; /* Increased font size */
+    color: cyan;
+    margin-bottom: 20px; /* Space below the "Welcome" text */
+    font-size:large;
+}
+
+.sub-text {
+    font-size: 2rem;
+    color: cyan;
+    margin-top: 0; /* Ensure no margin-top to make it closer to "Welcome" */
+}
+
+.buttons {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+}
+
+.login,
+.signup {
+    width: 100px;
+    height: 40px;
+    background-color: rgb(7, 7, 18);
+    color: rgb(77, 255, 255);
+    border: 0.5px solid black;
+    font-size: medium;
+    border-radius: 20px;
+    margin-right: 20px;
+}
+
+button:hover {
+    background-color: #020107;
+    color: rgb(133, 239, 255);
+    transform: scale(1.05);
+}
