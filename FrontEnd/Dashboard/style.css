@@ -185,3 +185,9 @@ header {
     margin: 6px;
     border-radius: 5px;
 }
+#fourth img{
+    width: 100%;
+    height: 80%;
+    border-radius: 7px;
+    
+}
