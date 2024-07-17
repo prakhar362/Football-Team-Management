@@ -105,27 +105,50 @@ let tl2 = gsap.timeline({
   .to("#scroll-6", {
     opacity: 0,
   });
-  
-  gsap.from("#input" , {
-    y: -50,
-    opacity: 0,
-    duration: 0.8,
-    delay : 1,
-    stagger : 1
-})
+  document.addEventListener("DOMContentLoaded", function() {
+    gsap.registerPlugin(ScrollTrigger);
 
-gsap.from("#ourInfo" , {
-    y: 50,
-    opacity : 0,
-    duration:0.5,
-    delay: 1,
-    stagger: 1
-})
+    gsap.from("#input", {
+        y: -50,
+        opacity: 0,
+        duration: 0.8,
+        delay: 1,
+        stagger: 1,
+        scrub: 5,
+        scrollTrigger: {
+            trigger: "#input",
+            start: "top 80%", // Trigger when the top of #input is 80% from the top of the viewport
+            end: "bottom 20%", // End when the bottom of #input is 20% from the top of the viewport
+            toggleActions: "play none none none"
+        }
+    });
 
-gsap.from(".SocialIcons i" , {
-    x: 100,
-    opacity: 0,
-    duration:0.5,
-    stagger: 0.4,
-    delay:1
-})
+    gsap.from("#ourInfo", {
+        y: 50,
+        opacity: 0,
+        duration: 0.5,
+        delay: 1,
+        stagger: 1,
+        scrub: 5,
+        scrollTrigger: {
+            trigger: "#ourInfo",
+            start: "top 80%",
+            end: "bottom 20%",
+            toggleActions: "play none none none"
+        }
+    });
+
+    gsap.from(".SocialIcons i", {
+        x: 100,
+        opacity: 0,
+        duration: 0.5,
+        stagger: 0.4,
+        delay: 1,
+        scrollTrigger: {
+            trigger: ".SocialIcons",
+            start: "top 80%",
+            end: "bottom 20%",
+            toggleActions: "play none none none"
+        }
+    });
+});
