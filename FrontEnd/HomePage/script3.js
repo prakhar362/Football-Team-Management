@@ -106,3 +106,26 @@ let tl2 = gsap.timeline({
     opacity: 0,
   });
   
+  gsap.from("#input" , {
+    y: -50,
+    opacity: 0,
+    duration: 0.8,
+    delay : 1,
+    stagger : 1
+})
+
+gsap.from("#ourInfo" , {
+    y: 50,
+    opacity : 0,
+    duration:0.5,
+    delay: 1,
+    stagger: 1
+})
+
+gsap.from(".SocialIcons i" , {
+    x: 100,
+    opacity: 0,
+    duration:0.5,
+    stagger: 0.4,
+    delay:1
+})

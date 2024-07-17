@@ -189,3 +189,142 @@ button:hover {
   height: 100%;
   background-color: red;
 }
+
+
+#input{
+    height: 350px;
+    width: 40%;
+    position: relative;
+    top: 30%;
+    left: 10%;    
+    border: 1px solid crimson;
+    border-radius:25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#input .name input , .email input , .review input{
+    height: 35px;
+    width: 300px;
+}
+
+#input .name , .email , .review {
+  margin-bottom: 25px;
+}
+
+
+
+.button {
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    padding-block: 0.5rem;
+    padding-inline: 1.25rem;
+    background-color: rgb(0 107 179);
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #ffff;
+    gap: 10px;
+    font-weight: bold;
+    border: 3px solid #ffffff4d;
+    outline: none;
+    overflow: hidden;
+    font-size: 15px;
+    width: 180px;
+    height: 40px;
+    margin: 5px 0px 5px 1%;
+  }
+  
+  .icon {
+    width: 24px;
+    height: 24px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .button:hover {
+    transform: scale(1.05);
+    border-color: #fff9;
+  }
+  
+  .button:hover .icon {
+    transform: translate(4px);
+  }
+  
+  .button:hover::before {
+    animation: shine 1.5s ease-out infinite;
+  }
+  
+  .button::before {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 100%;
+    background-image: linear-gradient(
+      120deg,
+      rgba(255, 255, 255, 0) 30%,
+      rgba(255, 255, 255, 0.8),
+      rgba(255, 255, 255, 0) 70%
+    );
+    top: 0;
+    left: -100px;
+    opacity: 0.6;
+  }
+  
+  @keyframes shine {
+    0% {
+      left: -100px;
+    }
+  
+    60% {
+      left: 100%;
+    }
+  
+    to {
+      left: 100%;
+    }
+  }
+  
+
+#ourInfo{
+    color: white;
+    position: relative;
+    top: 30%;
+    left: 60%;
+    border-radius: 30px;
+    height: 40%;
+    width: 30%;
+    text-align: center;
+    font-size: large;
+}
+
+#ourInfo h2 {
+    position: absolute;
+    top: -35%;
+    left: 5%;
+    font-size: 200%;
+    margin-bottom: 100px;
+}
+
+#ourInfo p i {
+    margin-right: 10px;
+}
+
+.SocialIcons{
+    position:relative;
+    top: 63%;
+    left: 68%;
+}
+
+.SocialIcons i{
+  margin: 10px 15px 10px 33px;
+  font-size: x-large;
+}
+
+.SocialIcons i:hover{
+  transform: scale(1.08);
+}
