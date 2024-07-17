@@ -174,7 +174,7 @@ header {
     border-radius: 12px;
     display: grid;
     grid-template-rows: 200px auto auto;
-    grid-template-columns: 400px auto auto;
+    grid-template-columns: 400px 400px auto;
 }
 
 #first, #second, #third, #fourth, #fifth, #sixth {
@@ -189,5 +189,14 @@ header {
     width: 100%;
     height: 80%;
     border-radius: 7px;
-    
+}
+#fifth >.container-box{
+    position:absolute;
+    width: 30%;
+    height: 45%;
+    background-color: #16213e;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: 400;
+    padding: 4px;
 }
