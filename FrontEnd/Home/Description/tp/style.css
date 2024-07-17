@@ -22,7 +22,7 @@ html,body{
     width: 50%;
     height: 100vh;
     color: azure;
-    font-size: larger;
+    font-size: 2rem;
 
 }
 
@@ -75,8 +75,9 @@ html,body{
 
 
 .phone img{
-    width: 20vw;
+    width: 22vw;
     height: 60vh;
+    margin-right: 1vw;
     
 }
 
