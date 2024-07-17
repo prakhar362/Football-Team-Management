@@ -15,6 +15,7 @@ body {
     position: fixed;
     font-size: x-large;
     border-radius: 7px;
+    border-right: 2px solid white;
 }
 .sidebar a {
     padding: 15px;
@@ -162,4 +163,26 @@ header {
 
 .btn:hover {
     background-color: #05B72B;
+}
+
+.grid-content {
+    position: absolute;
+    width: 80%;
+    height: 90%;
+    background-color: #16213e;
+    
+    margin-top: 12px;
+    border-radius: 12px;
+    display: grid;
+    grid-template-rows: 200px auto auto;
+    grid-template-columns: 400px auto auto;
+}
+
+#first, #second, #third, #fourth, #fifth, #sixth {
+    /* Adjust styles for each item as needed */
+    border: 3px solid white;
+    color: orange;
+    padding: 10px;
+    margin: 6px;
+    border-radius: 5px;
 }
