@@ -20,6 +20,11 @@ app.get('/HomePage', function(req, res) {
     res.render('HomePage/index'); // Use the correct path for the EJS file
 });
 
+// Route for the login page
+app.get('/login', (req, res) => {
+    res.render('login/login'); // Update this to match the correct path
+});
+
 // Start the server
 app.listen(port, (err) => {
     if (err) {
