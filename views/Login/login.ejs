@@ -10,23 +10,23 @@
     <div class="container right-panel-active">
         <!-- Sign Up -->
         <div class="container__form container--signup">
-            <form action="#" class="form" id="form1">
+            <form action="/api/auth/signup" method="POST" class="form" id="form1">
                 <h2 class="form__title">Sign Up</h2>
-                <input type="text" placeholder="UserName" class="input" />
-                <input type="email" placeholder="Email" class="input" />
-                <input type="password" placeholder="Password" class="input" />
-                <button class="btn">Sign Up</button>
+                <input type="text" name="username" placeholder="UserName" class="input" required />
+                <input type="email" name="email" placeholder="Email" class="input" required />
+                <input type="password" name="password" placeholder="Password" class="input" required />
+                <button type="submit" class="btn">Sign Up</button>
             </form>
         </div>
     
         <!-- Sign In -->
         <div class="container__form container--signin">
-            <form action="#" class="form" id="form2">
+            <form action="/api/auth/login" method="POST" class="form" id="form2">
                 <h2 class="form__title">Sign In</h2>
-                <input type="email" placeholder="Email" class="input" />
-                <input type="password" placeholder="Password" class="input" />
+                <input type="email" name="email" placeholder="Email" class="input" required />
+                <input type="password" name="password" placeholder="Password" class="input" required />
                 <a href="#" class="link">Forgot your password?</a>
-                <button class="btn">Sign In</button>
+                <button type="submit" class="btn">Sign In</button>
             </form>
         </div>
     
