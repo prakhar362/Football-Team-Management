@@ -1,54 +1,37 @@
 const express = require('express');
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const User = require('../models/User'); // Adjust path if necessary
-const router = express.Router({mergeParams:true});
+const router = express.Router();
+const User = require('../models/User');
 
-// Signup Route
+// Handle user signup
 router.post('/signup', async (req, res) => {
     const { username, email, password } = req.body;
     try {
-        // Hash the password
-        const hashedPassword = await bcrypt.hash(password, 10);
-
-        // Create and save the user
-        const user = new User({ username, email, password: hashedPassword });
+        // Create a new user
+        const user = new User({ username, email, password });
         await user.save();
 
-        // Optionally, create and set a token
-        const token = jwt.sign({ userId: user._id }, 'secretkey', { expiresIn: '1h' });
-        res.cookie('token', token, { httpOnly: true });
-
-        // Redirect to the dashboard
+        // Redirect to dashboard after signup
         res.redirect('/dashboard');
-
-    } catch (error) {
-        res.status(400).send('Error: ' + error.message);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Server Error');
     }
 });
 
-// Login Route
+// Handle user login
 router.post('/login', async (req, res) => {
     const { email, password } = req.body;
     try {
-        const user = await User.findOne({ email });
-        if (!user) {
-            return res.status(400).send('Invalid credentials');
+        const user = await User.findOne({ email, password });
+        if (user) {
+            res.cookie('user_id', user._id); // Set a cookie to keep user logged in
+            res.redirect('/dashboard');
+        } else {
+            res.status(401).send('Invalid Credentials');
         }
-
-        const isMatch = await bcrypt.compare(password, user.password);
-        if (!isMatch) {
-            return res.status(400).send('Invalid credentials');
-        }
-
-        // Create a token
-        const token = jwt.sign({ userId: user._id }, 'secretkey', { expiresIn: '1h' });
-
-        // Set a cookie with the token and redirect to dashboard
-        res.cookie('token', token, { httpOnly: true });
-        res.redirect('/dashboard');
-    } catch (error) {
-        res.status(400).send('Error: ' + error.message);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Server Error');
     }
 });
 

@@ -37,6 +37,9 @@ app.get('/login', (req, res) => {
     res.render('login/login'); // Update this to match the correct path
 });
 
+app.get('/signup', (req, res) => {
+    res.render('signup/index');
+});
 //Use auth routes
 app.use('/api/auth', authRoutes);
 
