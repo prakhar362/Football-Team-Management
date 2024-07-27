@@ -40,10 +40,15 @@ app.get('/login', (req, res) => {
 //Use auth routes
 app.use('/api/auth', authRoutes);
 
-// Route to serve the dashboard
 app.get('/dashboard', (req, res) => {
-    res.render('Dashboard/index'); // Update this to match the correct path
+    // Sample news data
+    const news = [
+        { headline: "Team Wins Championship!", link: "https://example.com/news1" },
+        { headline: "Transfer Market Updates", link: "https://example.com/news2" }
+    ];
+    res.render('Dashboard/index', { news });
 });
+
 
 // Start the server
 app.listen(port, (err) => {

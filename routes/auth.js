@@ -2,7 +2,7 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User'); // Adjust path if necessary
-const router = express.Router();
+const router = express.Router({mergeParams:true});
 
 // Signup Route
 router.post('/signup', async (req, res) => {
@@ -21,6 +21,7 @@ router.post('/signup', async (req, res) => {
 
         // Redirect to the dashboard
         res.redirect('/dashboard');
+
     } catch (error) {
         res.status(400).send('Error: ' + error.message);
     }
