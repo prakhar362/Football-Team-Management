@@ -7,57 +7,59 @@ const port = 3000;
 
 app.set('view engine', 'ejs');
 
-// These lines allow you to parse form data
+// Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
 
-// Set the views directory (now pointing to the parent views folder)
+// View engine setup
+app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 // MongoDB connection
-const dbURI = 'mongodb+srv://prakharshri2005:mgxVLlfnZel8VvhL@cluster0.4rpwgtp.mongodb.net/'; // Ensure this string is properly formatted
+const dbURI = 'mongodb+srv://prakharshri2005:mgxVLlfnZel8VvhL@cluster0.4rpwgtp.mongodb.net/';
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('MongoDB connected'))
-    .catch(err => console.log(err));
+    .catch(err => console.log('MongoDB connection error:', err));
 
-// Import the authentication routes
+// Import routes
 const authRoutes = require('./routes/auth');
 app.use('/api/auth', authRoutes);
 
-// Route to serve the HomePage.ejs file
-app.get('/HomePage', function (req, res) {
-    res.render('HomePage/index'); // Use the correct path for the EJS file
+// Routes
+app.get('/HomePage', (req, res) => {
+    res.render('HomePage/index');
 });
 
-// Route for the login page
 app.get('/login', (req, res) => {
-    res.render('login/login'); // Update this to match the correct path
+    res.render('login/login');
 });
 
 app.get('/signup', (req, res) => {
     res.render('signup/index');
 });
-//Use auth routes
-app.use('/api/auth', authRoutes);
 
 app.get('/dashboard', (req, res) => {
     // Sample news data
     const news = [
-        { headline: "Team Wins Championship!", link: "https://example.com/news1" },
-        { headline: "Transfer Market Updates", link: "https://example.com/news2" }
-    ];
+        {
+            headline: "Messi loses fitness battle at Copa America, puts goal of playing 6th World Cup on hold - Hindustan Times",
+            link: "https://www.hindustantimes.com/sports/football/messi-loses-fitness-battle-at-copa-america-puts-goal-of-playing-6th-world-cup-on-hold-101721091895524.html"
+        },
+        {
+            headline: "Colombian Football Federation president among dozens arrested at Copa Am\u00e9rica final - CNN",
+            link: "https://www.cnn.com/2024/07/16/sport/colombia-fa-president-arrested-copa-america-spt-intl/index.html"
+        },
+        {
+            headline: "Every NC State football player's grade in EA Sports College Football 25 - 247Sports",
+            link: "https://247sports.com/college/north-carolina-state/longformarticle/nc-state-football-ea-sports-college-football-25-grayson-mccall-kevin-concepcion-233861402/"
+        }
+    ]
     res.render('Dashboard/index', { news });
 });
 
-
-// Start the server
-app.listen(port, (err) => {
-    if (err) {
-        console.error('Error starting the server:', err);
-    } else {
-        console.log(`It's running, go to http://localhost:${port}/HomePage`);
-    }
+// Start server
+app.listen(port, () => {
+    console.log(`Server is running at http://localhost:${port}/HomePage`);
 });

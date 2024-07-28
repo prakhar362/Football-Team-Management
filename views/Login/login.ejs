@@ -79,20 +79,6 @@
             transform: translateX(100%);
         }
 
-        .container--signup {
-            left: 0;
-            opacity: 0;
-            width: 50%;
-            z-index: 1;
-        }
-
-        .container.right-panel-active .container--signup {
-            animation: show 0.6s;
-            opacity: 1;
-            transform: translateX(100%);
-            z-index: 5;
-        }
-
         .container__overlay {
             height: 100%;
             left: 50%;
@@ -221,20 +207,9 @@
 </head>
 <body>
     <div class="container">
-        <!-- Sign Up -->
-        <div class="container__form container--signup">
-            <form action="/signup" method="post" class="form" id="form1">
-                <h2 class="form__title">Sign Up</h2>
-                <input type="text" name="username" placeholder="Username" class="input" required />
-                <input type="email" name="email" placeholder="Email" class="input" required />
-                <input type="password" name="password" placeholder="Password" class="input" required />
-                <button class="btn">Sign Up</button>
-            </form>
-        </div>
-
         <!-- Sign In -->
         <div class="container__form container--signin">
-            <form action="/login" method="post" class="form" id="form2">
+            <form action="/api/auth/login" method="post" class="form" id="form2">
                 <h2 class="form__title">Sign In</h2>
                 <input type="email" name="email" placeholder="Email" class="input" required />
                 <input type="password" name="password" placeholder="Password" class="input" required />
@@ -246,9 +221,6 @@
         <!-- Overlay -->
         <div class="container__overlay">
             <div class="overlay">
-                <div class="overlay__panel overlay--left">
-                    <button class="btn" id="signIn">Sign In</button>
-                </div>
                 <div class="overlay__panel overlay--right">
                     <button class="btn" id="signUp">Sign Up</button>
                 </div>
@@ -256,22 +228,9 @@
         </div>
     </div>
     <script>
-        const signInBtn = document.getElementById("signIn");
-        const signUpBtn = document.getElementById("signUp");
-        const fistForm = document.getElementById("form1");
-        const secondForm = document.getElementById("form2");
-        const container = document.querySelector(".container");
-
-        signInBtn.addEventListener("click", () => {
-            container.classList.remove("right-panel-active");
+        document.getElementById("signUp").addEventListener("click", () => {
+            window.location.href = "/signup";
         });
-
-        signUpBtn.addEventListener("click", () => {
-            container.classList.add("right-panel-active");
-        });
-
-        fistForm.addEventListener("submit", (e) => e.preventDefault());
-        secondForm.addEventListener("submit", (e) => e.preventDefault());
     </script>
 </body>
 </html>
