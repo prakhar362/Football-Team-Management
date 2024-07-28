@@ -17,6 +17,12 @@ app.use(cookieParser());
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
+// Serve static files from the "views" directory
+app.use(express.static(path.join(__dirname, 'views')));
+// Serve static files from the "public" directory
+app.use(express.static(path.join(__dirname, 'public')));
+
+
 // MongoDB connection
 const dbURI = 'mongodb+srv://prakharshri2005:mgxVLlfnZel8VvhL@cluster0.4rpwgtp.mongodb.net/';
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
