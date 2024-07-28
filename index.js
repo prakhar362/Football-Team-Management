@@ -22,9 +22,15 @@ app.use(express.static(path.join(__dirname, 'views')));
 // Serve static files from the "public" directory
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Load environment variables from .env file
+require('dotenv').config();
 
-// MongoDB connection
-const dbURI = 'mongodb+srv://prakharshri2005:mgxVLlfnZel8VvhL@cluster0.4rpwgtp.mongodb.net/';
+
+
+// Get the MongoDB URI from the environment variables
+const dbURI = process.env.MONGODB_URI;
+
+// Connect to MongoDB
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('MongoDB connected'))
     .catch(err => console.log('MongoDB connection error:', err));
