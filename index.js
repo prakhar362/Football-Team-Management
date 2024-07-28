@@ -25,10 +25,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Load environment variables from .env file
 require('dotenv').config();
 
-
-
 // Get the MongoDB URI from the environment variables
 const dbURI = process.env.MONGODB_URI;
+
+if (!dbURI) {
+    console.error('Error: MONGODB_URI is not defined.');
+    process.exit(1); // Exit the process with an error code
+}
 
 // Connect to MongoDB
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
