@@ -37,7 +37,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
     });
 
 // Import routes
-const authRoutes = require('./server/routes/auth'); // Adjusted the path
+const authRoutes = require('./server/routes/auth');
 app.use('/api/auth', authRoutes);
 
 // Routes
