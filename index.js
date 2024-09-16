@@ -1,10 +1,10 @@
 const express = require('express');
-const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
-require('dotenv').config();
+require('dotenv').config(); // Load environment variables
 
+const app = express();
 const port = process.env.PORT || 3000;
 
 // Middleware
@@ -12,28 +12,27 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-// View engine setup
+// Set view engine and views directory
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'client/views'));
 
-// Serve static files
+// Serve static files from the public directory
 app.use(express.static(path.join(__dirname, 'client/public')));
 
-// Get the MongoDB URI from the environment variables
+// MongoDB URI from environment variables
 const dbURI = process.env.MONGODB_URI;
 
 if (!dbURI) {
     console.error('Error: MONGODB_URI is not defined.');
-    process.exit(1); // Exit the process with an error code
+    process.exit(1); // Exit if no MongoDB URI is provided
 }
 
 // Connect to MongoDB
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => {
-        console.log('MongoDB connected');
-    })
+    .then(() => console.log('MongoDB connected'))
     .catch(err => {
-        console.log('MongoDB connection error:', err);
+        console.error('MongoDB connection error:', err);
+        process.exit(1); // Exit on MongoDB connection error
     });
 
 // Import routes
@@ -42,15 +41,15 @@ app.use('/api/auth', authRoutes);
 
 // Routes
 app.get('/HomePage', (req, res) => {
-    res.render('HomePage/index');  // This renders 'client/views/HomePage/index.ejs'
+    res.render('HomePage/index');  // Renders 'client/views/HomePage/index.ejs'
 });
 
 app.get('/login', (req, res) => {
-    res.render('Login/login');  // This renders 'client/views/Login/login.ejs'
+    res.render('Login/login');  // Renders 'client/views/Login/login.ejs'
 });
 
 app.get('/signup', (req, res) => {
-    res.render('signup/index');  // This renders 'client/views/signup/index.ejs'
+    res.render('signup/index');  // Renders 'client/views/signup/index.ejs'
 });
 
 app.get('/dashboard', (req, res) => {
@@ -69,10 +68,16 @@ app.get('/dashboard', (req, res) => {
             link: "https://247sports.com/college/north-carolina-state/longformarticle/nc-state-football-ea-sports-college-football-25-grayson-mccall-kevin-concepcion-233861402/"
         }
     ];
-    res.render('dashboard', { news });  // This renders 'client/views/dashboard.ejs'
+    res.render('dashboard', { news });  // Passes news data to the view
 });
 
-// Start server
+// Error handling for invalid routes
+app.use((req, res) => {
+    res.status(404).send('Page not found');
+});
+
+// Start the server
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}/HomePage`);
 });
+
