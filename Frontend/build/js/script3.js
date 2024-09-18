@@ -1,39 +1,3 @@
-document.addEventListener('DOMContentLoaded', async () => {
-  // Fetch news from the backend
-  try {
-      const response = await fetch('https://football-team-management-rho.vercel.app/api/news'); // Adjust this URL to your backend endpoint
-      if (response.ok) {
-          const newsData = await response.json();
-          const newsList = document.getElementById('newsList');
-          newsData.forEach(newsItem => {
-              const listItem = document.createElement('li');
-              const link = document.createElement('a');
-              link.href = newsItem.link;
-              link.textContent = newsItem.headline;
-              link.target = '_blank'; // Open link in a new tab
-              listItem.appendChild(link);
-              newsList.appendChild(listItem);
-          });
-      } else {
-          console.error('Failed to fetch news:', response.statusText);
-      }
-  } catch (error) {
-      console.error('Error:', error);
-  }
-
-  // Handle navigation to login and signup
-  document.getElementById('loginLink').addEventListener('click', (event) => {
-      event.preventDefault();
-      window.location.href = 'https://football-team-management-rho.vercel.app'; // Redirect to backend login
-  });
-
-  document.getElementById('signupLink').addEventListener('click', (event) => {
-      event.preventDefault();
-      window.location.href = 'https://football-team-management-rho.vercel.app'; // Redirect to backend signup
-  });
-});
-
-
 // Ensure that the TextPlugin is registered
 gsap.registerPlugin(TextPlugin);
 
