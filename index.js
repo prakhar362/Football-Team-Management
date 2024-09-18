@@ -32,7 +32,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
     });
 
 // Import auth routes
-const authRoutes = require('./server/routes/auth');
+const authRoutes = require('./auth');
 app.use('/api/auth', authRoutes);  // Use the auth routes for signup and login
 
 // Routes to serve the static HTML files
