@@ -1,37 +1,59 @@
-document.addEventListener('DOMContentLoaded', async () => {
-  // Fetch news from the backend
-  try {
-      const response = await fetch('https://football-team-management-rho.vercel.app/api/news'); // Adjust this URL to your backend endpoint
-      if (response.ok) {
-          const newsData = await response.json();
-          const newsList = document.getElementById('newsList');
-          newsData.forEach(newsItem => {
-              const listItem = document.createElement('li');
-              const link = document.createElement('a');
-              link.href = newsItem.link;
-              link.textContent = newsItem.headline;
-              link.target = '_blank'; // Open link in a new tab
-              listItem.appendChild(link);
-              newsList.appendChild(listItem);
-          });
-      } else {
-          console.error('Failed to fetch news:', response.statusText);
-      }
-  } catch (error) {
-      console.error('Error:', error);
-  }
+const BACKEND_URL = 'https://football-team-management-rho.vercel.app'; // Correct URL
+
+// Fetch the HTML content of the homepage from the backend
+window.addEventListener('load', () => {
+    fetch(`${BACKEND_URL}/HomePage`)
+        .then(response => response.text()) // Get the response as text
+        .then(html => {
+            // Insert the fetched HTML into the current document
+            document.body.innerHTML = html;
+        })
+        .catch(err => console.error('Error fetching homepage:', err)); // Handle errors
+});
+
 
   // Handle navigation to login and signup
-  document.getElementById('loginLink').addEventListener('click', (event) => {
-      event.preventDefault();
-      window.location.href = 'https://football-team-management-rho.vercel.app'; // Redirect to backend login
-  });
+ // Handle navigation to login and signup
+document.getElementById('loginLink').addEventListener('click', async (event) => {
+  event.preventDefault();
 
-  document.getElementById('signupLink').addEventListener('click', (event) => {
-      event.preventDefault();
-      window.location.href = 'https://football-team-management-rho.vercel.app'; // Redirect to backend signup
-  });
+  // Redirect to login page
+  try {
+      const response = await fetch(`${BACKEND_URL}/login`, {
+          method: 'GET',
+          credentials: 'include' // Include cookies if needed
+      });
+
+      if (response.ok) {
+          window.location.href = `${BACKEND_URL}/login`; // Redirect to login
+      } else {
+          console.error('Login redirection failed');
+      }
+  } catch (error) {
+      console.error('Error during login redirection:', error);
+  }
 });
+
+document.getElementById('signupLink').addEventListener('click', async (event) => {
+  event.preventDefault();
+
+  // Redirect to signup page
+  try {
+      const response = await fetch(`${BACKEND_URL}/signup`, {
+          method: 'GET',
+          credentials: 'include' // Include cookies if needed
+      });
+
+      if (response.ok) {
+          window.location.href = `${BACKEND_URL}/signup`; // Redirect to signup
+      } else {
+          console.error('Signup redirection failed');
+      }
+  } catch (error) {
+      console.error('Error during signup redirection:', error);
+  }
+});
+
 
 
 // Ensure that the TextPlugin is registered
