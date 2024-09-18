@@ -1,3 +1,28 @@
+// homepage.js
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+      const response = await fetch('https://football-team-management-two.vercel.app/api/news'); // Adjust this URL to your backend endpoint
+      if (response.ok) {
+          const newsData = await response.json();
+          const newsList = document.getElementById('newsList');
+          newsData.forEach(newsItem => {
+              const listItem = document.createElement('li');
+              const link = document.createElement('a');
+              link.href = newsItem.link;
+              link.textContent = newsItem.headline;
+              link.target = '_blank'; // Open link in a new tab
+              listItem.appendChild(link);
+              newsList.appendChild(listItem);
+          });
+      } else {
+          console.error('Failed to fetch news:', response.statusText);
+      }
+  } catch (error) {
+      console.error('Error:', error);
+  }
+});
+
+
 // Ensure that the TextPlugin is registered
 gsap.registerPlugin(TextPlugin);
 
