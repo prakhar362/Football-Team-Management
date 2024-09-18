@@ -10,7 +10,7 @@ router.post('/signup', async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, 10);
         const user = new User({ username, email, password: hashedPassword });
         await user.save();
-        res.redirect('/dashboard');
+        res.redirect('/dashboard/index.html');
     } catch (err) {
         console.error(err);
         res.status(500).send('Server Error');
@@ -26,7 +26,7 @@ router.post('/login', async (req, res) => {
             const isMatch = await bcrypt.compare(password, user.password);
             if (isMatch) {
                 res.cookie('user_id', user._id);
-                res.redirect('/dashboard');
+                res.redirect('/dashboard/index.html');
             } else {
                 res.status(401).send('Invalid Credentials');
             }

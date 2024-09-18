@@ -31,6 +31,10 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
         process.exit(1); // Exit on MongoDB connection error
     });
 
+// Import auth routes
+const authRoutes = require('./server/routes/auth');
+app.use('/api/auth', authRoutes);  // Use the auth routes for signup and login
+
 // Routes to serve the static HTML files
 app.get('/HomePage', (req, res) => {
     res.sendFile(path.join(__dirname, 'frontend/homepage/index.html')); // Serve HomePage HTML file
