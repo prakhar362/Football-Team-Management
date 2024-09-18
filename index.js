@@ -10,7 +10,7 @@ const port = process.env.PORT || 3000;
 
 // CORS configuration
 app.use(cors({
-    origin: 'https://football-team-management-1.onrender.com/', // Replace with your Vercel frontend URL
+    origin: 'https://football-team-management-1.onrender.com', // Replace with your Vercel frontend URL
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true
 }));
