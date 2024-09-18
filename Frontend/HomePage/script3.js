@@ -1,5 +1,5 @@
-// homepage.js
 document.addEventListener('DOMContentLoaded', async () => {
+  // Fetch news from the backend
   try {
       const response = await fetch('https://football-team-management-two.vercel.app/api/news'); // Adjust this URL to your backend endpoint
       if (response.ok) {
@@ -20,6 +20,17 @@ document.addEventListener('DOMContentLoaded', async () => {
   } catch (error) {
       console.error('Error:', error);
   }
+
+  // Handle navigation to login and signup
+  document.getElementById('loginLink').addEventListener('click', (event) => {
+      event.preventDefault();
+      window.location.href = 'https://football-team-management-two.vercel.app/login'; // Redirect to backend login
+  });
+
+  document.getElementById('signupLink').addEventListener('click', (event) => {
+      event.preventDefault();
+      window.location.href = 'https://football-team-management-two.vercel.app/signup'; // Redirect to backend signup
+  });
 });
 
 
