@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
+const cors = require('cors'); // Import CORS
 require('dotenv').config(); // Load environment variables
 
 const app = express();
@@ -11,6 +12,13 @@ const port = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+
+// Configure CORS
+app.use(cors({
+    origin: 'https://your-frontend-domain.com', // Replace with your frontend URL
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
 // Serve static files from the 'frontend' folder
 app.use(express.static(path.join(__dirname, 'frontend')));
@@ -30,10 +38,6 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
         console.error('MongoDB connection error:', err);
         process.exit(1); // Exit on MongoDB connection error
     });
-
-// Import auth routes
-const authRoutes = require('./auth');
-app.use('/api/auth', authRoutes);  // Use the auth routes for signup and login
 
 // Routes to serve the static HTML files
 app.get('/HomePage', (req, res) => {
