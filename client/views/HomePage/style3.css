@@ -1,0 +1,359 @@
+/* Global styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.background {
+    background-image: url("./backgroundImage.jpg");
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden; 
+}
+
+.nav ul {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    color: whitesmoke;
+    margin: 15px 0px 0px 20px; 
+}
+
+.nav ul li {
+    margin-left: 20px;
+}
+
+.nav ul a {
+    text-decoration: none;
+    color: whitesmoke;
+    transition-duration: 0.6s;
+    padding: 10px 15px 15px 5px;
+    font-size: 15px;
+    font-weight: 400;
+    height: 40px;
+    width: 120px;
+}
+
+.nav ul a:hover {
+    background: linear-gradient(to left, #00bfff, #00ffff);
+    border-radius: 30px;
+    color: black;
+    justify-content: center;
+    padding-left: 10px;
+    transform: scale(1.04);
+}
+
+.demo {
+    padding: 2rem;
+    font-size: 4.5rem;
+    text-align: left;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 5%;
+    left: -25%;
+    
+}
+
+#welcome {
+    font-size: 6rem; 
+    color: cyan;
+    margin-bottom: 20px; 
+    font-size:large;
+}
+
+.sub-text {
+    font-size: 2rem;
+    color: cyan;
+    margin-top: 0; 
+}
+
+.buttons {
+    display: flex;
+    position: absolute;
+    bottom: 93%;
+    left: 80%;
+}
+
+.login,
+.signup {
+    width: 100px;
+    height: 40px;
+    background-color: rgb(7, 7, 18);
+    color: rgb(77, 255, 255);
+    border: 0.5px solid black;
+    font-size: medium;
+    border-radius: 20px;
+    margin-right: 20px;
+}
+
+button:hover {
+    background: linear-gradient(to left, #00bfff, #00ffff);
+    border-radius: 30px;
+    color: black;
+    justify-content: center;
+    padding-left: 10px;
+    transform: scale(1.04);
+}
+#part-5{
+  margin-top: 0;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding: 0vw 0vw 0vw 10vw;
+  height: 120vh;
+  background-color: #111;
+}
+
+
+.lft-part-5{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  width: 50%;
+  height: 100vh;
+  color: azure;
+  font-size: 1.5rem;
+
+}
+
+
+.scroll-txt{
+  position: absolute;
+  bottom: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  gap: 8vh;
+}
+
+
+.lft-part-5 p{
+  width: 100%;
+}
+
+
+.rght-part-5{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 100vh;
+}
+
+
+.phone{
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  width: 25vw;
+  height: 75vh;
+  border-radius: 45px;
+  border: 1.5vw solid #212121;
+  overflow: hidden;
+}
+
+
+.phone-img{
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  width: 450%;
+  height: 900%;
+  margin-left: 0%;
+  
+}
+
+
+.phone img{
+  width: 26vw;
+  height: 75vh;
+  margin-right: 1vw;
+  margin-left: 1vw;
+}
+.phone-img img.no-margin-left {
+  margin-left: 0;
+}
+.phone-img img.no-margin-right {
+  margin-right: 0;
+  width: 27vw;
+}
+
+#scroll-2, #scroll-3, #scroll-4,#scroll-5,#scroll-6{
+  opacity: 0;
+  /*
+   transition: all cubic-bezier(0.19, 1, 0.22, 1)1s; */
+}
+.reviews{
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  background-color: aqua;
+}
+.red{
+  position: absolute;
+  margin-top: 0px;
+width: 100%;
+height: 100%;
+background-color: #212121;
+}
+
+.contact{
+border-top: 5px solid white;
+}
+
+.contact{
+border-top: 5px solid white;
+}
+#input{
+  height: 350px;
+  width: 40%;
+  position: absolute;
+  top: 30%;
+  left: 10%;    
+  border-top: 5px solid white;
+  border: 1px solid crimson;
+  border-radius:25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#input .name input , .email input , .review input{
+  height: 35px;
+  width: 300px;
+  border-radius: 7px;
+}
+
+#input .name , .email , .review {
+margin-bottom: 25px;
+}
+
+.button {
+  position: relative;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+  padding-block: 0.5rem;
+  padding-inline: 1.25rem;
+  background-color: rgb(0 107 179);
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #ffff;
+  gap: 10px;
+  font-weight: bold;
+  border: 3px solid #ffffff4d;
+  outline: none;
+  overflow: hidden;
+  font-size: 15px;
+  width: 180px;
+  height: 40px;
+  margin: 5px 0px 5px 1%;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  transition: all 0.3s ease-in-out;
+}
+
+.button:hover {
+  transform: scale(1.05);
+  border-color: #fff9;
+}
+
+.button:hover .icon {
+  transform: translate(4px);
+}
+
+.button:hover::before {
+  animation: shine 1.5s ease-out infinite;
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 100%;
+  background-image: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 30%,
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0) 70%
+  );
+  top: 0;
+  left: -100px;
+  opacity: 0.6;
+}
+
+@keyframes shine {
+  0% {
+    left: -100px;
+  }
+
+  60% {
+    left: 100%;
+  }
+
+  to {
+    left: 100%;
+  }
+}
+
+/*Last Part*/
+#ourInfo{
+  color: white;
+  position: absolute;
+  top: 40%;
+  left: 60%;
+  border-radius: 30px;
+  height: 40%;
+  width: 30%;
+  text-align: center;
+  font-size: large;
+}
+
+#ourInfo h2 {
+  position: absolute;
+  top: -20%;
+  left: 5%;
+  font-size: 200%;
+  margin-bottom: 100px;
+}
+
+#ourInfo p i {
+  margin-right: 10px;
+}
+
+.SocialIcons{
+  position:absolute;
+  top: 70%;
+  left: 68%;
+}
+
+.SocialIcons i{
+margin: 10px 15px 10px 33px;
+font-size: x-large;
+}
+
+.SocialIcons i {
+transition: transform 0.3s ease;
+}
+
+.SocialIcons i:hover {
+background: linear-gradient(to left, #00bfff, #00ffff);
+border-radius: 5px;
+color: black;
+justify-content: center;
+padding: 10px;
+transform: scale(1.04);
+}
